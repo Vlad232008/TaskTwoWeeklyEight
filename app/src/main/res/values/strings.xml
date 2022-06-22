@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Heroes</string>
+    <string name="app_name">Task2Weekly8</string>
     <string name="intelligence">Intelligence</string>
     <string name="speed">Speed</string>
     <string name="power">Power</string>
@@ -7,13 +7,13 @@
     <string name="durability">Durability</string>
     <string name="strength">Strength</string>
     <string name="name">Name</string>
-    <string name="about_app">About</string>
-    <string name="about_application">About Application</string>
-    <string name="author">Author</string>
-    <string name="my_name">Petrov Alexander</string>
+    <string name="program">Program</string>
+    <string name="info_list">Информация о приложении</string>
+    <string name="author">Автор</string>
+    <string name="my_name">Рогачев Владислав</string>
     <string name="github">GitHub</string>
-    <string name="git_hub">https://github.com/wintezz/HeroesLastWeek</string>
-    <string name="date_of_creation">Date of creation</string>
-    <string name="data">21.06.22</string>
-    <string name="accept">Accept</string>
+    <string name="git_hub">https://github.com/Vlad232008</string>
+    <string name="create_date">Дата создания</string>
+    <string name="data">20.06.22</string>
+    <string name="back">Назад</string>
 </resources>
