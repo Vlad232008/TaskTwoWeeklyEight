@@ -1,4 +1,4 @@
-package com.example.tasktwoweeklyeight.ui.adapter
+package com.example.tasktwoweeklyeight.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,16 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktwoweeklyeight.R
-import com.example.tasktwoweeklyeight.data.model.HeroModel
-import com.example.tasktwoweeklyeight.ui.util.DiffUtilsCallBack
+import com.example.tasktwoweeklyeight.data.model.Movie
+import com.example.tasktwoweeklyeight.util.DiffUtilsCallBack
 import com.squareup.picasso.Picasso
 
 class MainAdapter(
     private val onListItemClickListener: ItemClickListener,
-    private var data: ArrayList<HeroModel> = arrayListOf()
+    private var data: ArrayList<Movie> = arrayListOf()
 ) : RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
 
-    fun setData(newData: List<HeroModel>) {
+    fun setData(newData: List<Movie>) {
         val diffUtilsCallBack = DiffUtilsCallBack(data, newData)
         val diffResult = DiffUtil.calculateDiff(diffUtilsCallBack)
         data.addAll(newData)
@@ -39,7 +39,7 @@ class MainAdapter(
 
     inner class RecyclerItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(data: HeroModel) {
+        fun bind(data: Movie) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
                 itemView.findViewById<TextView>(R.id.name).text = data.name
 
@@ -52,12 +52,12 @@ class MainAdapter(
             }
         }
 
-        private fun openInNewWindow(dataModel: HeroModel) {
+        private fun openInNewWindow(dataModel: Movie) {
             onListItemClickListener.onItemClick(dataModel)
         }
     }
 
     interface ItemClickListener {
-        fun onItemClick(dataModel: HeroModel)
+        fun onItemClick(dataModel: Movie)
     }
 }

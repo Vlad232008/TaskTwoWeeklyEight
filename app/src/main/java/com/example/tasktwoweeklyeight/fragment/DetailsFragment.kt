@@ -1,4 +1,4 @@
-package com.example.tasktwoweeklyeight.ui.fragment
+package com.example.tasktwoweeklyeight.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tasktwoweeklyeight.R
-import com.example.tasktwoweeklyeight.data.model.HeroModel
+import com.example.tasktwoweeklyeight.data.model.Movie
 import com.example.tasktwoweeklyeight.databinding.FragmentDetailsBinding
 import com.squareup.picasso.Picasso
 
@@ -32,7 +32,7 @@ class DetailsFragment : Fragment() {
     }
 
     private fun renderData() {
-        val data = arguments?.getParcelable<HeroModel>(KEY)
+        val data = arguments?.getParcelable<Movie>(KEY)
 
         with(bind) {
             data?.let {
@@ -57,7 +57,7 @@ class DetailsFragment : Fragment() {
     companion object {
         private const val KEY = "details"
 
-        fun newInstance(data: HeroModel) = DetailsFragment().apply {
+        fun newInstance(data: Movie) = DetailsFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(KEY, data)
             }

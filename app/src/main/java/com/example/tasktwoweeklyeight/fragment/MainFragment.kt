@@ -1,4 +1,4 @@
-package com.example.tasktwoweeklyeight.ui.fragment
+package com.example.tasktwoweeklyeight.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -6,15 +6,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tasktwoweeklyeight.MainApp.Companion.router
-import com.example.tasktwoweeklyeight.data.model.HeroModel
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.tasktwoweeklyeight.MainApplication.Companion.router
+import com.example.tasktwoweeklyeight.data.model.Movie
 import com.example.tasktwoweeklyeight.data.retrofit.AppState
 import com.example.tasktwoweeklyeight.R
 import com.example.tasktwoweeklyeight.databinding.FragmentMainBinding
-import com.example.tasktwoweeklyeight.ui.adapter.MainAdapter
-import com.example.tasktwoweeklyeight.ui.cicerone.MainScreen
-import com.example.tasktwoweeklyeight.ui.model.MainViewModel
+import com.example.tasktwoweeklyeight.adapter.MainAdapter
+import com.example.tasktwoweeklyeight.cicerone.MainScreen
+import com.example.tasktwoweeklyeight.viewmodel.MainViewModel
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {
@@ -24,7 +24,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val onListItemClickListener: MainAdapter.ItemClickListener =
         object : MainAdapter.ItemClickListener {
-            override fun onItemClick(dataModel: HeroModel) {
+            override fun onItemClick(dataModel: Movie) {
                 router.navigateTo(MainScreen().showDetailsScreen(dataModel))
             }
         }
@@ -41,7 +41,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun initRecyclerView() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.layoutManager = GridLayoutManager(context,2)
         binding.recyclerView.adapter = adapter
     }
 
@@ -54,7 +54,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         when (appState) {
             is AppState.Error -> {
                 Toast.makeText(context, appState.error.message, Toast.LENGTH_SHORT).show()
-                Log.d("MY_TAG", appState.error.message.toString())
+                Log.d("MyLog", appState.error.message.toString())
             }
             is AppState.Success -> {
                 appState.dataModel?.let {

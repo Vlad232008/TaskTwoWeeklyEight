@@ -1,12 +1,12 @@
-package com.example.tasktwoweeklyeight.ui.model
+package com.example.tasktwoweeklyeight.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tasktwoweeklyeight.MainApp
-import com.example.tasktwoweeklyeight.data.model.HeroModel
+import com.example.tasktwoweeklyeight.MainApplication
+import com.example.tasktwoweeklyeight.data.model.Movie
 import com.example.tasktwoweeklyeight.data.repository.Repository
 import com.example.tasktwoweeklyeight.data.repository.RepositoryImpl
 import com.example.tasktwoweeklyeight.data.retrofit.AppState
@@ -15,11 +15,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    private val repository: Repository<List<HeroModel>> = RepositoryImpl()
+    private val repository: Repository<List<Movie>> = RepositoryImpl()
 ) : ViewModel() {
     private val sharedPreferences =
-        MainApp.ContextHolder.context
-            .getSharedPreferences(tagHero, Context.MODE_PRIVATE)
+        MainApplication.ContextHolder.context
+            .getSharedPreferences(heroTag, Context.MODE_PRIVATE)
 
     private val data = MutableLiveData<AppState>()
 
@@ -33,7 +33,7 @@ class MainViewModel(
                 if (dataFromSharedPrefs != null) {
                     val dataFromPrefs = gson.fromJson(
                         dataFromSharedPrefs,
-                        Array<HeroModel>::class.java
+                        Array<Movie>::class.java
                     ).asList()
 
                     data.postValue(AppState.Success(dataFromPrefs))
@@ -50,7 +50,7 @@ class MainViewModel(
     }
 
     companion object {
-        private const val tagHero = "superHero"
+        private const val heroTag = "movieHero"
         private const val dataTag = "data"
     }
 }

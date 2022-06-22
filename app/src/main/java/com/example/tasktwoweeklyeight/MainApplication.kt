@@ -6,7 +6,7 @@ import android.content.Context
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 
-class MainApp : Application() {
+class MainApplication : Application() {
     @SuppressLint("StaticFieldLeak")
     object ContextHolder {
         lateinit var context: Context

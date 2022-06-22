@@ -1,11 +1,11 @@
-package com.example.tasktwoweeklyeight.ui.util
+package com.example.tasktwoweeklyeight.util
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.tasktwoweeklyeight.data.model.HeroModel
+import com.example.tasktwoweeklyeight.data.model.Movie
 
 class DiffUtilsCallBack(
-    private val oldList: List<HeroModel>,
-    private val newList: List<HeroModel>,
+    private val oldList: List<Movie>,
+    private val newList: List<Movie>,
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size
